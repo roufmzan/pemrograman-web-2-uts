@@ -44,12 +44,5 @@ Proyek ini mendemonstrasikan beberapa konsep penting dalam Pemrograman Web 2:
 - **Event-Driven Architecture**: Menggunakan `.on('message')` dan `.on('connection')` untuk menangani aksi secara asinkron.
 - **Real-Time Communication**: Mengurangi latensi dan overhead header dibandingkan metode Polling tradisional.
 
----
 
-## 👤 Identitas
-- **Nama**: Rouf
-- **Mata Kuliah**: Pemrograman Web 2
-- **Semester**: 4
 
----
-© 2026 RoufBlog. All rights reserved.
