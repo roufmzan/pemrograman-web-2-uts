@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f9; }
+        #log { background: #000; color: #00ff00; padding: 15px; border-radius: 5px; height: 300px; overflow-y: auto; font-family: monospace; }
+        .input-group { margin-top: 15px; }
+        input { padding: 10px; width: 70%; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 20px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .status { margin-bottom: 10px; font-weight: bold; }
+        .online { color: green; }
+        .offline { color: red; }
+    </style>
+</head>
+<body>
+    <h2>WebSocket Client Test</h2>
+    <div id="status" class="status offline">Status: Terputus</div>
+    
+    <div id="log"></div>
+
+    <div class="input-group">
+        <input type="text" id="messageInput" placeholder="Ketik pesan di sini...">
+        <button onclick="sendMessage()">Kirim Pesan</button>
+    </div>
+
+    <script>
+        const logElement = document.getElementById('log');
+        const statusElement = document.getElementById('status');
+        const messageInput = document.getElementById('messageInput');
+
+        // Hubungkan ke server WebSocket kamu
+        const socket = new WebSocket('ws://localhost:8080');
+
+        function appendLog(msg, type = 'info') {
+            const time = new Date().toLocaleTimeString();
+            const color = type === 'server' ? '#00ff00' : (type === 'client' ? '#3b82f6' : '#fff');
+            logElement.innerHTML += `<div style="color: ${color}">[${time}] ${msg}</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        socket.onopen = () => {
+            statusElement.innerText = 'Status: Terhubung (Online)';
+            statusElement.className = 'status online';
+            appendLog('Berhasil terhubung ke server!');
+        };
+
+        socket.onmessage = (event) => {
+            appendLog(`Server: ${event.data}`, 'server');
+        };
+
+        socket.onclose = () => {
+            statusElement.innerText = 'Status: Terputus (Offline)';
+            statusElement.className = 'status offline';
+            appendLog('Koneksi terputus.', 'error');
+        };
+
+        socket.onerror = (error) => {
+            appendLog('Terjadi kesalahan koneksi.', 'error');
+        };
+
+        function sendMessage() {
+            const msg = messageInput.value;
+            if (msg) {
+                socket.send(msg);
+                appendLog(`Kamu: ${msg}`, 'client');
+                messageInput.value = '';
+            }
+        }
+
+        // Support tekan Enter untuk kirim
+        messageInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
