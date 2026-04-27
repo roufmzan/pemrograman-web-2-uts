@@ -6,7 +6,7 @@ Proyek ini dikembangkan untuk tugas **Pemrograman Web 2**. Berisi implementasi w
 - `index.html` - Halaman utama blog artikel (Layout Grid & Sidebar).
 - `style.css` - Desain responsif dan modern untuk website.
 - `artikel-detail.html` - Template halaman isi artikel.
-- `gemini-code-xxx.js` - Server WebSocket (Backend) berbasis Node.js.
+- `Perakitan Komponen Infrastruktur Server (Backend).js` - Server WebSocket (Backend) berbasis Node.js.
 - `test-websocket.html` - Client Interface untuk mengetes koneksi WebSocket.
 - `Transformasi Arsitektur Web Real.pdf` - Materi referensi arsitektur web.
 
