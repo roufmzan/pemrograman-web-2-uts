@@ -28,7 +28,7 @@ Untuk menjalankan fitur real-time, pastikan Anda sudah menginstall Node.js, lalu
 
 2. **Jalankan Server**:
    ```bash
-   node gemini-code-1777279995550.js
+   Perakitan Komponen Infrastruktur Server (Backend).js
    ```
    *Jika berhasil, akan muncul log: `Fasilitas server WebSocket telah diaktifkan pada port 8080.`*
 
