@@ -1,5 +1,7 @@
 # 🚀 Proyek Website Artikel & WebSocket Real-Time
 
+<img width="1440" height="764" alt="Tangkapan Layar 2026-04-27 pukul 16 19 08" src="https://github.com/user-attachments/assets/eab5d890-9408-4202-8e3f-ba5272322736" />
+
 Proyek ini dikembangkan untuk tugas **Pemrograman Web 2**. Berisi implementasi website artikel statis yang modern serta sistem komunikasi dua arah (Full-Duplex) menggunakan protokol **WebSocket**.
 
 ## 📂 Struktur Folder
